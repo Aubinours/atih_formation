@@ -1,0 +1,33 @@
+.viz-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.graph-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 1180px;
+}
+
+.filters-container {
+  border-left: 1px solid black;
+  padding: 22px 11px;
+  padding-left: 50px;
+}
+
+.filter-title {
+  color: white;
+  background-color: #1C7E6D;
+  padding: 5px 30px;
+  font-weight: 500;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  border-radius: 42.5px;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: center;
+}

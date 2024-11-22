@@ -1,0 +1,66 @@
+<ods-dataset-context 
+context="soinscrit,soinscritdum"
+soinscrit-dataset="mco_soins_crit_neonat"
+soinscritdum-dataset="mco_soins_crit_neonat"
+
+ng-init="variables={
+'sommaire':{
+
+}
+}">
+
+
+
+<%- include("components/header.ejs"); -%>
+
+
+<div class="page-template">
+    <%- include("components/sommaire.ejs"); -%>
+
+    <div class="page-container">
+        <div class="header-page">
+            <span class="maj ">Mis à jour le 14/05/24</span>
+            <div><span>Données de cette thématique</span></div>
+        </div>
+<div class="p-25">
+
+<span class="c-tu s-32 w-700">MCO</span></div>
+
+<section>
+<span><h2 class="w-700 s-24 c-db py-30">
+    Patients hospitalisés en France
+</h2>
+</span>
+
+<%- include("components/graph-container.ejs",
+{title:'Catégorie d\'hospitalisations',
+description:'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis...',
+visualisation:'../mco/categorie-hospitalisation.ejs',
+geo:'False',
+context:'soinscrit',
+contextdum:'soinscritdum',
+geo_field:'test',
+date:'True',
+date_field:'annee',
+
+}
+); -%>
+
+
+
+
+
+
+</section>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</ods-dataset-context>

@@ -1,0 +1,65 @@
+<div class="graph-container">
+
+    <div class="visualisation">
+        <div class="viz-header">
+        <span class="w-700 s-18 py-25 c-db">
+            <%= title %>
+        </span>
+
+        <span class="s-16 c-t">
+            <%= description %>
+        </span>
+
+    </div>
+    <%- include( visualisation ); -%>
+</div>
+    <div class="filters">
+        <div class=" filters-container">
+            <div class="filter-header"> 
+                   <span class="filter-title"><img src="/assets/theme_image/filtres.svg" style="height:15px"> Filtrer</span> 
+
+            </div>
+            <% if(geo=='True'){ %>
+                <span class="c-db s-16">Géographique</span>
+                <div ods-facet-results="items"
+                ods-facet-results-context=" <%= context%>"
+                ods-facet-results-facet-name="<%= geo_field%>"
+                >
+                <ods-select
+                options="items"
+                selected-values="<%= contextdum %>.parameters['refine.<%= geo_field%>']"
+                label-modifier="name"
+                value-modifier="name"
+                placeholder="Région"
+                multiple="true">
+            </ods-select>
+
+            </div>
+                <% } %>
+                <% if(date=='True'){ %>
+                    <span class="c-db s-16">Période</span>
+                    <div ods-facet-results="items"
+                    ods-facet-results-context="<%= contextdum%>"
+                    ods-facet-results-facet-name="<%= date_field%>"
+                    >
+                    <ods-select
+                    options="items"
+                    selected-values="<%= context %>.parameters['refine.<%= date_field%>']"
+                    label-modifier="name"
+                    value-modifier="name"
+                    placeholder="Années"
+                    multiple="true">
+                </ods-select>
+    
+                </div>
+                    <% } %>
+                    
+                    <div >
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

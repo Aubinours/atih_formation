@@ -1,0 +1,102 @@
+@use "sass:map";
+@use "sass:meta";
+@import "color";
+
+
+h1 {
+    font-weight: 700;
+    font-size: 32px;
+}
+
+
+$spaces: ("0", "1", "2", "4", "5","6", "8", "10", "12", "16", "18", "24", "30", "40", "60", "100");
+$directions: (
+    "l": "left",
+    "r": "right",
+    "t": "top",
+    "b": "bottom"
+);
+@each $space in $spaces {
+    .mx-#{$space} {
+        margin-left: #{$space}px;
+        margin-right: #{$space}px;
+    }
+    .my-#{$space} {
+        margin-top: #{$space}px;
+        margin-bottom: #{$space}px;
+    }
+    @each $dirkey, $dirvalue in $directions {
+        .m#{$dirkey}-#{$space} {
+            margin-#{$dirvalue}: #{$space}px;
+        }
+        .p#{$dirkey}-#{$space} {
+            padding-#{$dirvalue}: #{$space}px;
+        }
+    }
+    .px-#{$space} {
+        padding-left: #{$space}px;
+        padding-right: #{$space}px;
+    }
+    .py-#{$space} {
+        padding-top: #{$space}px;
+        padding-bottom: #{$space}px;
+    }
+    .p-#{$space} {
+        padding: #{$space}px;
+    }
+}
+
+$sizes: ("12", "15", "16","18", "20", "22", "24", "26", "28", "32", "34", "36", "40", "44", "56");
+@each $key in $sizes {
+    .s-#{$key} {
+        font-size: #{$key}px;
+    }
+}
+
+$weights: ("300", "400", "600", "700","800", "900");
+@each $key in $weights {
+    .w-#{$key} {
+        font-weight: #{$key};
+    }
+}
+
+$radius: ("4", "8", "16", "30", "99");
+@each $key in $radius {
+    .r-#{$key} {
+        border-radius: #{$key}px;
+    }
+}
+
+$colors: (
+    "db": $darkblue,
+    "dg": $darkgreen,
+    "ld": $lightgreen,
+    "tu": $tous,
+    "b": $black,
+    "w": $white,
+    "t": $text,
+    "lgrey": $lightgrey,
+);
+
+@each $key, $value in $colors {
+    .c-#{$key} {
+        color: map.get($colors, $key);
+    }
+    .bg-#{$key} {
+        background-color: map.get($colors, $key);
+    }
+    .border-#{$key} {
+        border-color: map.get($colors, $key) !important;
+        /* important is necessary to override default color of border property when no color is specified */
+    }
+}
+
+/********** Composants **************/
+
+@include meta.load-css("common");
+@include meta.load-css("components/header");
+@include meta.load-css("components/sommaire");
+@include meta.load-css("components/graph-container");
+
+
+

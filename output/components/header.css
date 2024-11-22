@@ -1,0 +1,5 @@
+.header-container {
+  margin-left: 64px;
+  display: flex;
+  flex-direction: column;
+}
