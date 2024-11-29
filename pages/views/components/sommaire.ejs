@@ -1,8 +1,16 @@
 <div class="summery-container">
-
-<div class="summery-openner">
-<span class="btn bg-tu c-w">Sommaire</span>
+<div class="summery-openner" ng-if="!variables.sommaire_open">
+<button class="btn bg-tu c-w" ng-click="variables.sommaire_open=!variables.sommaire_open" >Sommaire</button>
 </div>
 
+<div class="sommaire_menu py-40  px-40 mr-30" ng-if="variables.sommaire_open">
+    <button class="bg-tu close p-10" ng-click="variables.sommaire_open=!variables.sommaire_open"><img src="/assets/theme_image/Group 171.svg"/></button>
+<div class="mb-30" ng-repeat="item in variables.sommaire">
+    <div class="s-16 w-700 c-db mb-15">{{item.title}}</div>
+    <div ng-repeat="subitem in item.viz" class="c-db s-16 py-8  link">
+        <a class="c-db px-10" href="#{{subitem.id}}"> {{subitem.title}}</a>
+    </div>
+    </div>
 
+</div>
 </div>

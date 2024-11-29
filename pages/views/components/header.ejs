@@ -1,8 +1,23 @@
+
 <section class="bg-db py-40 " >
 
     <div class="header-container">
     <span class="w-600 s-32 c-w py-10" > Activité sanitaire</span>
 
-    <span class="w-500 s-16 c-w py-10">MCO</span>
+<div class="menu c-w s-16">
+
+    <div ng-repeat="item in variables.header">
+        <div class="submenu" style="border: 2px solid {{item.color}}">
+            
+            <div ng-repeat="subitem in item.pages" style="height:100%">
+            <div class="w-500 s-16 c-w item {{item.class}} " style="{{subitem.titre==variables.activepage ? 'backgroud-color :' + item.color : ''}}">
+    <a class="c-w"  href="{{subitem.url}}"> {{subitem.titre}} 
+        <span ng-if="subitem.soustitre.length>0" class="s-12">{{subitem.soustitre}}</span>
+
+    </a>
+</div></div>
+</div>
+</div>
+</div>
 </div>
 </section>

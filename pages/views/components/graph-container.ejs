@@ -1,4 +1,4 @@
-<div class="graph-container">
+<div class="graph-container pb-72 mb-80">
 
     <div class="visualisation">
         <div class="viz-header">
@@ -13,30 +13,32 @@
     </div>
     <%- include( visualisation ); -%>
 </div>
-    <div class="filters">
-        <div class=" filters-container">
+    <div class="filters ">
+        <div class=" filters-container ">
             <div class="filter-header"> 
                    <span class="filter-title"><img src="/assets/theme_image/filtres.svg" style="height:15px"> Filtrer</span> 
 
             </div>
-            <% if(geo=='True'){ %>
+            <div class="norm py-25 g-25"> 
+            <% if(geo=='True'){ %><div>
                 <span class="c-db s-16">Géographique</span>
                 <div ods-facet-results="items"
-                ods-facet-results-context=" <%= context%>"
+                ods-facet-results-context=" <%= contextdum%>"
                 ods-facet-results-facet-name="<%= geo_field%>"
                 >
                 <ods-select
                 options="items"
-                selected-values="<%= contextdum %>.parameters['refine.<%= geo_field%>']"
+                selected-values="<%= context %>.parameters['refine.<%= geo_field%>']"
                 label-modifier="name"
                 value-modifier="name"
                 placeholder="Région"
                 multiple="true">
             </ods-select>
-
+        </div>
             </div>
                 <% } %>
                 <% if(date=='True'){ %>
+                    <div>
                     <span class="c-db s-16">Période</span>
                     <div ods-facet-results="items"
                     ods-facet-results-context="<%= contextdum%>"
@@ -51,9 +53,9 @@
                     multiple="true">
                 </ods-select>
     
-                </div>
+                </div></div>
                     <% } %>
-                    
+                </div>
                     <div >
 
             </div>

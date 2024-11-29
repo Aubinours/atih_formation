@@ -1,4 +1,4 @@
-@import "../color";
+@use "../color";
 
 .summery-container{
     width:350px;
@@ -7,4 +7,39 @@
 
 .summery-openner{
 padding-left:60px
+}
+.sommaire_menu{
+    background-color:#277FBC1A;
+    border-radius: 0px 60px 0px 0px;
+    position: relative;
+
+    .link:hover{
+        color:color.$tous;
+        border-left:4px solid color.$tous;
+    }
+    .link{
+        border-left:4px solid transparent;
+    }
+    a:hover{
+        
+        text-decoration:none
+    }
+    a{
+        display: block;
+    }
+    img{
+        height:20px;
+        width:auto
+    }
+    .close{
+        border-radius: 50px 0px 0px 50px;
+        width: fit-content;
+        position: absolute;
+        right: 0;
+
+    }
+
+}
+button{
+    border:none
 }

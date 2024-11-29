@@ -1,12 +1,87 @@
 <ods-dataset-context 
-context="soinscrit,soinscritdum"
+context="soinscrit,soinscritdum,urgence,urgencedummy"
+
 soinscrit-dataset="mco_soins_crit_neonat"
+soinscrit-parameters="{'disjunctive.annee':'True'}"
 soinscritdum-dataset="mco_soins_crit_neonat"
 
-ng-init="variables={
-'sommaire':{
+urgence-dataset="mco-urgences-jeu-de-donnees-test"
+urgence-parameters="{'disjunctive.annee':'True','disjunctive.region':'True'}"
+urgencedummy-dataset="mco-urgences-jeu-de-donnees-test"
+urgencedummy-parameters="{'disjunctive.annee':'True','disjunctive.region':'True'}"
 
-}
+ng-init="variables={
+'sommaire_open':false,
+'sommaire':[
+    {
+        'title':'Caractérisation des établissements',
+        'viz':[
+            {
+            'title':'Nombre d\’ESMS',
+            'id':'nb_esm',
+            },
+            {
+            'title':'Part de CPOM signés par catégorie d\'ESMS',
+            'id':'cpom_esms',
+            },
+            {
+            'title':'Nombre moyen de lits et places autorisés en hébergement permanent, temporaire et accueil de jour',
+            'id':'nb_places',
+            }
+        ]
+    },
+    {
+        'title':'Exemple 2',
+        'viz':[
+            {
+            'title':'Visualisation 1',
+            'id':'nb_esm',
+            },
+            {
+            'title':'Visualisation 2',
+            'id':'cpom_esms',
+            }
+        ]
+    },
+],
+'activepage':'MCO',
+'header':[
+    {
+        'pages':[
+            {
+            'titre':'Tous champs',
+            'url':'/pages/tous_champs'
+            },
+            {
+                'titre':'Sprécifiques',
+                'url':'/pages/specifiques'
+            },
+            {
+                'titre':'Externes',
+                'url':'/pages/externes'
+            }
+            
+        ],
+        'color':'rgba(39, 127, 188, 1)',
+        'class':'bg-tu-h',
+    },
+    {
+        'pages':[
+            {
+            'titre':'MCO',
+            'url':'/pages/mco',
+            'soustitre':'Médecine, chirurgie, obstétrique'
+            },
+            {
+                'titre':'Urgences',
+                'url':'/pages/urgences'
+            }
+        ],
+        'class':'bg-mco-h',
+        'color':'rgba(244, 180, 96, 1)'
+    },
+]
+
 }">
 
 
@@ -20,7 +95,8 @@ ng-init="variables={
     <div class="page-container">
         <div class="header-page">
             <span class="maj ">Mis à jour le 14/05/24</span>
-            <div><span>Données de cette thématique</span></div>
+            <div>
+                <span>Données de cette thématique</span></div>
         </div>
 <div class="p-25">
 
@@ -32,35 +108,45 @@ ng-init="variables={
 </h2>
 </span>
 
+
 <%- include("components/graph-container.ejs",
 {title:'Catégorie d\'hospitalisations',
 description:'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis...',
 visualisation:'../mco/categorie-hospitalisation.ejs',
-geo:'False',
+geo:'True',
 context:'soinscrit',
 contextdum:'soinscritdum',
-geo_field:'test',
+geo_field:'lib_reg',
 date:'True',
-date_field:'annee',
-
-}
+date_field:'annee',}
 ); -%>
 
+<%- include("components/graph-container.ejs",
+{title:'Catégorie d\'hospitalisations pour les sejours avec passage aux urgences',
+description:'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis...',
+visualisation:'../mco/categorie-evolution-urgence.ejs',
+geo:'True',
+context:'urgence',
+contextdum:'urgencedummy',
+geo_field:'region',
+date:'False',
+date_field:'',}
+); -%>
 
-
-
-
+<%- include("components/graph-container.ejs",
+{title:'Catégorie d\'hospitalisations pour les sejours avec passage aux urgences',
+description:'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis...',
+visualisation:'../mco/categorie-evolution-urgence.ejs',
+geo:'True',
+context:'urgence',
+contextdum:'urgencedummy',
+geo_field:'region',
+date:'False',
+date_field:'',}
+); -%>
 
 </section>
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 </ods-dataset-context>

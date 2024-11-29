@@ -1,5 +1,4 @@
-@import "../color";
-
+@use "../color";
 
 .viz-header{
     display: flex
@@ -8,10 +7,8 @@
         gap: 16px;
 }
 .graph-container{
-    display: grid
-    ;
+    display: grid;
         grid-template-columns: 2fr 1fr;
-    width:1180px;
 }
 .filters-container{
 border-left: 1px solid black;
@@ -21,7 +18,7 @@ padding-left:50px
 }
 .filter-title{
     color:white;
-    background-color: $darkgreen;
+    background-color: color.$darkgreen;
     padding: 5px 30px;
 font-weight:500;
 display: flex ;
@@ -35,4 +32,12 @@ border-radius:42.5px;
     justify-content: center;
 }
 .filters{
+}
+
+.odswidget-select-button{
+background: white;
+    border: 1px solid var(--softBorder, rgba(229, 231, 244, 1));
+    border-radius: 10px;
+    color: rgba(83, 103, 121, 1);
+
 }

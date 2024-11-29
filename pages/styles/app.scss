@@ -9,7 +9,7 @@ h1 {
 }
 
 
-$spaces: ("0", "1", "2", "4", "5","6", "8", "10", "12", "16", "18", "24", "30", "40", "60", "100");
+$spaces: ("0", "1", "2", "4", "5","6", "8", "10", "12","15", "16", "18", "24","25", "30", "40","45","50", "60","80","72", "100");
 $directions: (
     "l": "left",
     "r": "right",
@@ -44,6 +44,9 @@ $directions: (
     .p-#{$space} {
         padding: #{$space}px;
     }
+    .g-#{$space} {
+        gap: #{$space}px;
+    }
 }
 
 $sizes: ("12", "15", "16","18", "20", "22", "24", "26", "28", "32", "34", "36", "40", "44", "56");
@@ -76,6 +79,7 @@ $colors: (
     "w": $white,
     "t": $text,
     "lgrey": $lightgrey,
+    "mco":$mco
 );
 
 @each $key, $value in $colors {
@@ -83,6 +87,9 @@ $colors: (
         color: map.get($colors, $key);
     }
     .bg-#{$key} {
+        background-color: map.get($colors, $key);
+    }
+    .bg-#{$key}-h:hover {
         background-color: map.get($colors, $key);
     }
     .border-#{$key} {
@@ -97,6 +104,7 @@ $colors: (
 @include meta.load-css("components/header");
 @include meta.load-css("components/sommaire");
 @include meta.load-css("components/graph-container");
+
 
 
 
