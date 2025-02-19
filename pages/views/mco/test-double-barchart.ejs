@@ -1,0 +1,6 @@
+<%- include("../components/double-barchart-croise.ejs",
+{ctx:'ctx',
+select:'avg(duree_moy_sej) as value',
+dim1:'type_etab',
+dim2:'cas'}
+); -%>

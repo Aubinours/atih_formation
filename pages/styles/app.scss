@@ -104,6 +104,7 @@ $colors: (
 @include meta.load-css("components/header");
 @include meta.load-css("components/sommaire");
 @include meta.load-css("components/graph-container");
+@include meta.load-css("components/double-barchart-croise");
 
 
 

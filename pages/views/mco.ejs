@@ -1,5 +1,5 @@
 <ods-dataset-context 
-context="soinscrit,soinscritdum,urgence,urgencedummy"
+context="soinscrit,soinscritdum,urgence,urgencedummy,ctx"
 
 soinscrit-dataset="mco_soins_crit_neonat"
 soinscrit-parameters="{'disjunctive.annee':'True'}"
@@ -9,6 +9,9 @@ urgence-dataset="mco-urgences-jeu-de-donnees-test"
 urgence-parameters="{'disjunctive.annee':'True','disjunctive.region':'True'}"
 urgencedummy-dataset="mco-urgences-jeu-de-donnees-test"
 urgencedummy-parameters="{'disjunctive.annee':'True','disjunctive.region':'True'}"
+
+ctx-dataset="jdd-test-mco-onboarding"
+ctx-parameters="{'disjunctive.type_etab':'True','disjunctive.cas':'True'}"
 
 ng-init="variables={
 'sommaire_open':false,
@@ -134,15 +137,15 @@ date_field:'',}
 ); -%>
 
 <%- include("components/graph-container.ejs",
-{title:'Catégorie d\'hospitalisations pour les sejours avec passage aux urgences',
+{title:'Test double barchart',
 description:'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis...',
-visualisation:'../mco/categorie-evolution-urgence.ejs',
-geo:'True',
-context:'urgence',
+visualisation:'../mco/test-double-barchart.ejs',
+geo:'false',
+context:'ctx',
 contextdum:'urgencedummy',
 geo_field:'region',
-date:'False',
-date_field:'',}
+date:'True',
+date_field:'annee',}
 ); -%>
 
 </section>

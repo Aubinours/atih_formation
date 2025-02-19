@@ -1,0 +1,22 @@
+.bar{
+    height: 100%;
+    background: green;
+    position: absolute;
+    left: 0;
+    top: 0;    
+}
+.bar-container{
+    position: relative
+}
+.bar-text{
+    position: relative;
+    z-index: 1;
+    padding:0 5px
+
+}
+.greybar{
+    background-color: lightgray;
+    border-right: 3px solid white;
+    color:white;
+
+}

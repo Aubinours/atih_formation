@@ -1,0 +1,87 @@
+
+<div ng-init="table={}">
+
+<div ods-adv-analysis="myData"
+        ods-adv-analysis-context="<%=ctx %>"
+        ods-adv-analysis-select="<%= select %>"
+        ods-adv-analysis-group-by="<%=dim1 %> as dim1, <%=dim2 %> as dim2">
+        {{table.values=myData;""}}</div>
+
+        <div ods-adv-analysis="myData"
+        ods-adv-analysis-context="<%=ctx %>"
+        ods-adv-analysis-select="<%= select %>"
+        ods-adv-analysis-group-by="<%=dim1 %> as dim1">
+        {{table.totalline=myData;""}}</div>
+
+        <div ods-adv-analysis="myData"
+        ods-adv-analysis-context="<%=ctx %>"
+        ods-adv-analysis-select="<%= select %>"
+        ods-adv-analysis-group-by= "<%=dim2 %> as dim2">
+        {{table.totalcol=myData;""}}</div>
+
+        <div ods-facet-results="dim1"
+        ods-facet-results-context="<%=ctx %>"
+        ods-facet-results-facet-name="<%=dim1 %>">
+        {{table.lines=dim1;""}}
+    </div>
+
+    <div ods-subaggregation="table.values"
+    ods-subaggregation-serie-min="MIN(value)"
+    ods-subaggregation-serie-max="MAX(value)">
+    {{ table.max=results[0].max;""}}
+    {{ table.min=results[0].min;""}}
+</div>
+
+   
+    <div ods-facet-results="dim2"
+    ods-facet-results-context="<%=ctx %>"
+    ods-facet-results-facet-name="<%=dim2 %>">
+    {{table.col=dim2;""}}
+</div>
+
+{{table.totalcol}}
+<table ng-if="table.col">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th ng-repeat="item in table.col">
+                {{item.name}}
+                </th>
+                <th >
+                    total
+                    </th>
+            </tr>
+    </thead>
+    <body>
+        <tr ng-repeat="line in table.lines" >
+            <th>
+                {{line.name}}
+            </th>
+            <th class="greybar" ng-repeat="col in table.col" >
+       <div ng-repeat="value in table.values" > 
+<div class="bar-container" ng-if="value.dim1==line.name && value.dim2==col.name ">
+<span class="bar-text">{{value.value | number:2}}</span>
+{{percent= ((value.value/table.max)*100|number:0);"" }}
+<div class="bar" style="width:{{percent}}%">
+
+</div>
+</div></div> 
+            </th>
+            <th class="greybar">
+                <div class="bar-container" >
+                    <span class="bar-text">{{table.totalline[$index].value|number:2}}</span>
+                    {{percent= ((table.totalline[$index].value/table.max)*100|number:0);"" }}
+                    <div class="bar" style="width:{{percent}}%"></div>
+
+            </div>
+            </th>
+
+        </tr>
+
+    </body>
+
+
+</table>
+        
+</div>
